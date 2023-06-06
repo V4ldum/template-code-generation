@@ -1,0 +1,8 @@
+name: {{brick_name.snackCase()}}_hooks
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  mason: any
+
