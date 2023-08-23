@@ -1,0 +1,18 @@
+.idea/
+/**/.idea
+build/
+/**/build
+.DS_Store
+/**/.DS_Store
+
+# Dart
+.mason/
+/**/.mason
+.dart_tool/
+/**/.dart_tool
+mason-lock.json
+/**/mason-lock.json
+.packages
+/**/.packages
+pubspec.lock
+/**/pubspec.lock
