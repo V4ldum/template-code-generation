@@ -37,5 +37,5 @@ Future<void> importPackages() async {
 
 Future<void> finalize() async {
   await Process.run('mason', ['get'], runInShell: Platform.isWindows);
-  await Process.run('pub', ['global', 'run', 'intl_utils:generate'], runInShell: Platform.isWindows);
+  await Process.run('flutter', ['pub', 'global', 'run', 'intl_utils:generate'], runInShell: Platform.isWindows);
 }
