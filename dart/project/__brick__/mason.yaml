@@ -1,3 +1,5 @@
 bricks:
-  project:
-    path: ../template-code-generation/dart/project
+  feature:
+    git:
+      url: "https://github.com/V4ldum/template-code-generation"
+      path: dart/feature

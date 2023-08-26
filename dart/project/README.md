@@ -1,6 +1,6 @@
 # Project
 
-This template is used to generate the skeleton for a Flutter project using clean architecture
+This template is used to generate the skeleton for a Flutter project with all the boilerplate
 
 To use this brick on a freshly created Flutter project, run :
 
