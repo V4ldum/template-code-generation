@@ -9,7 +9,7 @@ Future<void> run(HookContext context) async {
 
   final brickName = context.vars[brickNameKey] as String;
 
-  await pubGet(brickName);
+  await pubGet(brickName.snakeCase);
 
   progress.complete();
   context.logger.alert("Don't forget gen files, __brick__ folder & readme");

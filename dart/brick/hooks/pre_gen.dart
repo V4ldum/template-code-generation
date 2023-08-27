@@ -9,9 +9,9 @@ Future<void> run(HookContext context) async {
 
   final brickName = context.vars[brickNameKey] as String;
 
-  await createBrickBase(brickName);
-  await removeUselessFiles(brickName);
-  await removeForRecreation(brickName);
+  await createBrickBase(brickName.snakeCase);
+  await removeUselessFiles(brickName.snakeCase);
+  await removeForRecreation(brickName.snakeCase);
 
   progress.complete();
 }

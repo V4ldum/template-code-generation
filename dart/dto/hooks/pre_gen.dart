@@ -8,7 +8,7 @@ Future<void> run(HookContext context) async {
   final progress = context.logger.progress('Running pre_gen');
   final featureName = context.vars[featureNameKey] as String;
 
-  await clearGitKeep(featureName);
+  await clearGitKeep(featureName.snakeCase);
 
   progress.complete();
 }
