@@ -5,6 +5,8 @@ import 'package:mason/mason.dart';
 const String sdkLowerBoundKey = 'sdk_lower_bound';
 const String sdkUpperBoundKey = 'sdk_upper_bound';
 const String projectNameKey = 'project_name';
+const String pathBuildKey = 'path';
+const String fileBuildKey = 'file';
 
 Future<void> run(HookContext context) async {
   final progress = context.logger.progress('Running pre_gen');
@@ -12,6 +14,8 @@ Future<void> run(HookContext context) async {
   context.vars = {
     ...context.vars,
     ...await getInformations(),
+    pathBuildKey: '{{path}}', // fix to avoid deleting some mustache template from the build.yaml file
+    fileBuildKey: '{{file}}', // fix to avoid deleting some mustache template from the build.yaml file
   };
   await removeFiles();
   await addMasonToGitignore();

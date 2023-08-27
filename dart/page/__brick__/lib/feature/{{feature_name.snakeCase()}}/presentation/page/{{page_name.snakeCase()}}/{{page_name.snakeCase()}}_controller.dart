@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meta_package/meta_package.dart';
-import 'package:{{project_name}}/features/{{feature_name.snakeCase()}}/presentation/page/{{page_name.snakeCase()}}/{{page_name.snakeCase()}}_navigator.dart';
-import 'package:{{project_name}}/navigation/app_navigator.dart';
+import 'package:{{project_name}}/feature/{{feature_name.snakeCase()}}/presentation/page/{{page_name.snakeCase()}}/{{page_name.snakeCase()}}_navigator.dart';
 
 final {{page_name.camelCase()}}ControllerProvider = Provider.autoDispose((ref) {
   final navigator = ref.read({{page_name.camelCase()}}NavigatorProvider);

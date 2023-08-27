@@ -6,4 +6,4 @@ targets:
           - lib/**.dart
         options:
           build_extensions:
-            '^lib/{{path}}/{{file}}.dart': 'lib/{{path}}/generated/{{file}}.g.dart'
+            '^lib/{{{path}}}/{{{file}}}.dart': 'lib/{{{path}}}/generated/{{{file}}}.g.dart'
