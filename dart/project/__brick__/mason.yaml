@@ -3,3 +3,7 @@ bricks:
     git:
       url: "https://github.com/V4ldum/template-code-generation"
       path: dart/feature
+  dto:
+    git:
+      url: "https://github.com/V4ldum/template-code-generation"
+      path: dart/dto

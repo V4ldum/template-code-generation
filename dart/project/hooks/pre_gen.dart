@@ -2,6 +2,10 @@ import 'dart:io';
 
 import 'package:mason/mason.dart';
 
+const String sdkLowerBoundKey = 'sdk_lower_bound';
+const String sdkUpperBoundKey = 'sdk_upper_bound';
+const String projectNameKey = 'project_name';
+
 Future<void> run(HookContext context) async {
   final progress = context.logger.progress('Running pre_gen');
 
@@ -23,9 +27,9 @@ Future<Map<String, String>> getInformations() async {
   final projectLine = lines.firstWhere((line) => line.contains('name:'));
 
   return {
-    'sdk_lower_bound': sdkLine.split(": '>=")[1].split(' <')[0],
-    'sdk_upper_bound': sdkLine.split(": '>=")[1].split(' <')[1].replaceAll("'", ''),
-    'project_name': projectLine.split(': ')[1],
+    sdkLowerBoundKey: sdkLine.split(": '>=")[1].split(' <')[0],
+    sdkUpperBoundKey: sdkLine.split(": '>=")[1].split(' <')[1].replaceAll("'", ''),
+    projectNameKey: projectLine.split(': ')[1],
   };
 }
 
