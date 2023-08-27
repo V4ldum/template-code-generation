@@ -7,3 +7,7 @@ bricks:
     git:
       url: "https://github.com/V4ldum/template-code-generation"
       path: dart/dto
+  page:
+    git:
+      url: "https://github.com/V4ldum/template-code-generation"
+      path: dart/page
