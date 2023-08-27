@@ -19,7 +19,7 @@ Future<void> run(HookContext context) async {
 }
 
 Future<void> clearGitKeep(String featureName) async {
-  await Process.run('rm', ['lib/features/$featureName/presentation/page/.gitkeep'], runInShell: Platform.isWindows);
+  await Process.run('rm', ['lib/feature/$featureName/presentation/page/.gitkeep'], runInShell: Platform.isWindows);
 }
 
 Future<String> getProjectName() async {

@@ -11,5 +11,5 @@ Future<void> run(HookContext context) async {
 }
 
 Future<void> clearGitKeep() async {
-  await Process.run('rm', ['lib/features/.gitkeep'], runInShell: Platform.isWindows);
+  await Process.run('rm', ['lib/feature/.gitkeep'], runInShell: Platform.isWindows);
 }
