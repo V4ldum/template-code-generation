@@ -42,6 +42,7 @@ Future<void> removeFiles() async {
   await Process.run('rm', ['analysis_options.yaml']);
   await Process.run('rm', ['mason.yaml']);
   await Process.run('rm', ['lib/main.dart']);
+  await Process.run('rm', ['test/widget_test.dart']);
 }
 
 Future<void> addMasonToGitignore() async {
