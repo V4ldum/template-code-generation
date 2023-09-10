@@ -16,6 +16,7 @@ Future<void> importPackages() async {
   await Process.run('flutter', ['pub', 'add', 'dio'], runInShell: Platform.isWindows);
   await Process.run('flutter', ['pub', 'add', 'flutter_riverpod'], runInShell: Platform.isWindows);
   await Process.run('flutter', ['pub', 'add', 'json_annotation'], runInShell: Platform.isWindows);
+  await Process.run('flutter', ['pub', 'add', 'intl'], runInShell: Platform.isWindows);
   await Process.run(
     'flutter',
     ['pub', 'add', 'meta_package', '--git-url=https://github.com/V4ldum/meta-package', '--git-ref=main'],
