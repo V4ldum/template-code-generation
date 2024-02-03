@@ -4,11 +4,11 @@ import 'package:{{project_name}}/shared/presentation/page/loading_page.dart';
 
 @protected
 final router = GoRouter(
-  initialLocation: Routes._loadingPath,
+  initialLocation: AppRoute._loadingPath,
   routes: [
     GoRoute(
-      name: Routes.loading,
-      path: Routes._loadingPath,
+      name: AppRoute.loading,
+      path: AppRoute._loadingPath,
       builder: (_, __) => const LoadingPage(),
       routes: [
         //
@@ -17,8 +17,8 @@ final router = GoRouter(
   ],
 );
 
-class Routes {
-  Routes._();
+class AppRoute {
+  AppRoute._();
 
   static const String loading = 'loading';
   static const String _loadingPath = '/';
