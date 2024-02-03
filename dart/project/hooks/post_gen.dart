@@ -15,8 +15,12 @@ Future<void> importPackages() async {
   // dependencies
   await Process.run('flutter', ['pub', 'add', 'dio'], runInShell: Platform.isWindows);
   await Process.run('flutter', ['pub', 'add', 'flutter_riverpod'], runInShell: Platform.isWindows);
-  await Process.run('flutter', ['pub', 'add', 'json_annotation'], runInShell: Platform.isWindows);
+  await Process.run('flutter', ['pub', 'add', 'freezed_annotation'], runInShell: Platform.isWindows);
+  await Process.run('flutter', ['pub', 'add', 'go_router'], runInShell: Platform.isWindows);
   await Process.run('flutter', ['pub', 'add', 'intl'], runInShell: Platform.isWindows);
+  await Process.run('flutter', ['pub', 'add', 'json_annotation'], runInShell: Platform.isWindows);
+  await Process.run('flutter', ['pub', 'add', 'riverpod_annotation'], runInShell: Platform.isWindows);
+
   await Process.run(
     'flutter',
     ['pub', 'add', 'meta_package', '--git-url=https://github.com/V4ldum/meta-package', '--git-ref=main'],
@@ -31,7 +35,9 @@ Future<void> importPackages() async {
   // dev dependencies
   await Process.run('flutter', ['pub', 'add', '--dev', 'build_runner'], runInShell: Platform.isWindows);
   await Process.run('flutter', ['pub', 'add', '--dev', 'custom_lint'], runInShell: Platform.isWindows);
+  await Process.run('flutter', ['pub', 'add', '--dev', 'freezed'], runInShell: Platform.isWindows);
   await Process.run('flutter', ['pub', 'add', '--dev', 'json_serializable'], runInShell: Platform.isWindows);
+  await Process.run('flutter', ['pub', 'add', '--dev', 'riverpod_generator'], runInShell: Platform.isWindows);
   await Process.run('flutter', ['pub', 'add', '--dev', 'riverpod_lint'], runInShell: Platform.isWindows);
   await Process.run('flutter', ['pub', 'add', '--dev', 'very_good_analysis'], runInShell: Platform.isWindows);
 }
@@ -39,4 +45,5 @@ Future<void> importPackages() async {
 Future<void> finalize() async {
   await Process.run('mason', ['get'], runInShell: Platform.isWindows);
   await Process.run('flutter', ['pub', 'global', 'run', 'intl_utils:generate'], runInShell: Platform.isWindows);
+  await Process.run('dart', ['run', 'build_runner', 'build'], runInShell: Platform.isWindows);
 }

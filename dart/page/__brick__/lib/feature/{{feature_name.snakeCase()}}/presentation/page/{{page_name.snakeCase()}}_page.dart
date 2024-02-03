@@ -9,7 +9,9 @@ class {{page_name.pascalCase()}}Page extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('{{page_name.pascalCase()}}')),
+      appBar: AppBar(
+        title: const Text('{{page_name.pascalCase()}}'), // TODO(auto): Strings
+      ),
       body: const SafeArea(
         child: Center(
           child: Text('{{page_name.pascalCase()}}'),

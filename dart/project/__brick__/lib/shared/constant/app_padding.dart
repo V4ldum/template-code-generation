@@ -1,5 +1,8 @@
 /// Standard paddings used across the app
-class Paddings {
+/// Follows Fibonacci
+class AppPadding {
+  AppPadding._();
+
   /// 2 pixels
   static const xxs = 2.0;
 
