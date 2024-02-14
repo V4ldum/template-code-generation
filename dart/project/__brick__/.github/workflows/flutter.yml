@@ -1,0 +1,98 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Flutter
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compare version with tag
+        run: |
+          PUBSPEC_VERSION=$(cat pubspec.yaml | grep version: | cut -d ':' -f 2 | xargs)
+          [[ "$PUBSPEC_VERSION" == "${{github.ref_name}}" ]] || false
+
+      - uses: subosito/flutter-action@v2
+
+      - name: Config Flutter
+        run: flutter config --no-analytics
+
+      - name: Clean project
+        run: |
+          flutter clean
+          find lib/**/_generated/* -type f -delete
+          find lib/**/_generated -type d -delete
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Rebuild generated code
+        run: |
+          rm -rf .dart_tool
+          dart run build_runner build --delete-conflicting-outputs
+          dart run intl_utils:generate
+        
+
+        # TODO add back later
+        # - name: Verify formatting
+        #  run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze project source
+        run: dart analyze
+
+      # Your project will need to have tests in test/ and a dependency on
+      # package:test for this step to succeed. Note that Flutter projects will
+      # want to change this to 'flutter test'.
+      # - name: Run tests
+      #   run: dart test
+
+  build:
+    needs: analyze
+    if: success()
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+
+      - name: Clean project
+        run: |
+          flutter clean
+          find lib/**/_generated/* -type f -delete
+          find lib/**/_generated -type d -delete
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Rebuild generated code
+        run: |
+          rm -rf .dart_tool
+          dart run build_runner build --delete-conflicting-outputs
+          dart run intl_utils:generate
+
+# TODO app signing
+#      - name: Decode files
+#        env:
+#          KEYSTORE: ${{ secrets.KEYSTORE }}
+#          KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
+#        run: |
+#          echo $KEYSTORE | base64 -di > "$PWD/android/NAME-signing-key.jks"
+#          echo $KEY_PROPERTIES | base64 -di > "$PWD/android/key.properties"
+
+      - name: Build project
+        run: flutter build apk --split-per-abi
+
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/*-release.apk,build/app/outputs/flutter-apk/*-release.apk.sha1"

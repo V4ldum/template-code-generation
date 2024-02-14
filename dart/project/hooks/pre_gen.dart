@@ -39,6 +39,7 @@ Future<Map<String, String>> getInformations() async {
 
 Future<void> removeFiles() async {
   await Process.run('rm', ['pubspec.yaml']);
+  await Process.run('rm', ['README.md']);
   await Process.run('rm', ['analysis_options.yaml']);
   await Process.run('rm', ['mason.yaml']);
   await Process.run('rm', ['lib/main.dart']);
