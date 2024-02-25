@@ -2,17 +2,19 @@ import 'dart:io';
 
 import 'package:mason/mason.dart';
 
-const String featureNameKey = 'feature_name';
-
 Future<void> run(HookContext context) async {
   final progress = context.logger.progress('Running post_gen');
-  final featureName = context.vars[featureNameKey] as String;
 
-  await clearGitKeep(featureName.snakeCase);
+  await generateRepository();
 
   progress.complete();
 }
 
-Future<void> clearGitKeep(String featureName) async {
-  await Process.run('rm', ['lib/feature/$featureName/domain/repository/.gitkeep'], runInShell: Platform.isWindows);
+Future<void> generateRepository() async {
+  await Process.run('rm', ['-rf', '.dart_tool'], runInShell: Platform.isWindows);
+  await Process.run(
+    'dart',
+    ['run', 'build_runner', 'build', '--delete-conflicting-outputs'],
+    runInShell: Platform.isWindows,
+  );
 }
