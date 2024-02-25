@@ -11,5 +11,10 @@ Future<void> run(HookContext context) async {
 }
 
 Future<void> generateDto() async {
-  await Process.run('dart', ['run', 'build_runner', 'build'], runInShell: Platform.isWindows);
+  await Process.run('rm', ['-rf', '.dart_tool'], runInShell: Platform.isWindows);
+  await Process.run(
+    'dart',
+    ['run', 'build_runner', 'build', '--delete-conflicting-outputs'],
+    runInShell: Platform.isWindows,
+  );
 }

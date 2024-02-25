@@ -11,3 +11,15 @@ bricks:
     git:
       url: "https://github.com/V4ldum/template-code-generation"
       path: dart/page
+  source:
+    git:
+      url: "https://github.com/V4ldum/template-code-generation"
+      path: dart/source
+  repo:
+    git:
+      url: "https://github.com/V4ldum/template-code-generation"
+      path: dart/repo
+  service:
+    git:
+      url: "https://github.com/V4ldum/template-code-generation"
+      path: dart/service
